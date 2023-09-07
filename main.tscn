@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://rsk27q2a5ec"]
+[gd_scene load_steps=9 format=3 uid="uid://rsk27q2a5ec"]
 
 [ext_resource type="Texture2D" uid="uid://dkuuwf4gq2nx4" path="res://icon.svg" id="1_xvjud"]
 [ext_resource type="Script" path="res://Player.gd" id="2_41qk8"]
 [ext_resource type="Shader" path="res://wall.gdshader" id="2_cehn0"]
 [ext_resource type="Script" path="res://Wall.gd" id="3_uorn2"]
 [ext_resource type="Texture2D" uid="uid://dqusprgidw1x3" path="res://wall.png" id="4_atxrj"]
+[ext_resource type="Script" path="res://SubViewport.gd" id="6_r78tu"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lxrnd"]
 viewport_path = NodePath("SubViewport")
@@ -36,10 +37,20 @@ scale = Vector2(8, 8)
 texture = ExtResource("4_atxrj")
 script = ExtResource("3_uorn2")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(396, 291)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Camera2D"]
+remote_path = NodePath("../../SubViewport/SubCamera")
+
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 size = Vector2i(1152, 648)
+script = ExtResource("6_r78tu")
 
 [node name="PlayerSprite" type="Sprite2D" parent="SubViewport"]
 position = Vector2(460, 255)
 texture = ExtResource("1_xvjud")
+
+[node name="SubCamera" type="Camera2D" parent="SubViewport"]
+position = Vector2(396, 291)
