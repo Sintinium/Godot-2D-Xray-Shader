@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://rsk27q2a5ec"]
+[gd_scene load_steps=8 format=3 uid="uid://rsk27q2a5ec"]
 
 [ext_resource type="Texture2D" uid="uid://dkuuwf4gq2nx4" path="res://icon.svg" id="1_xvjud"]
 [ext_resource type="Script" path="res://Player.gd" id="2_41qk8"]
 [ext_resource type="Shader" path="res://wall.gdshader" id="2_cehn0"]
-[ext_resource type="Script" path="res://Wall.gd" id="3_uorn2"]
 [ext_resource type="Texture2D" uid="uid://dqusprgidw1x3" path="res://wall.png" id="4_atxrj"]
 [ext_resource type="Script" path="res://SubViewport.gd" id="6_r78tu"]
 
@@ -35,7 +34,6 @@ material = SubResource("ShaderMaterial_te4ve")
 position = Vector2(510, 305)
 scale = Vector2(8, 8)
 texture = ExtResource("4_atxrj")
-script = ExtResource("3_uorn2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(396, 291)
