@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://rsk27q2a5ec"]
+
+[ext_resource type="Texture2D" uid="uid://dkuuwf4gq2nx4" path="res://icon.svg" id="1_xvjud"]
+[ext_resource type="Script" path="res://Player.gd" id="2_41qk8"]
+[ext_resource type="Shader" path="res://wall.gdshader" id="2_cehn0"]
+[ext_resource type="Script" path="res://Wall.gd" id="3_uorn2"]
+[ext_resource type="Texture2D" uid="uid://dqusprgidw1x3" path="res://wall.png" id="4_atxrj"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lxrnd"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_te4ve"]
+resource_local_to_scene = true
+shader = ExtResource("2_cehn0")
+shader_parameter/tint = Color(0, 0.87451, 0, 1)
+shader_parameter/player_viewport = SubResource("ViewportTexture_lxrnd")
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(460, 255)
+texture = ExtResource("1_xvjud")
+script = ExtResource("2_41qk8")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../SubViewport/PlayerSprite")
+update_rotation = false
+update_scale = false
+
+[node name="Wall" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_te4ve")
+position = Vector2(510, 305)
+scale = Vector2(8, 8)
+texture = ExtResource("4_atxrj")
+script = ExtResource("3_uorn2")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1152, 648)
+
+[node name="PlayerSprite" type="Sprite2D" parent="SubViewport"]
+position = Vector2(460, 255)
+texture = ExtResource("1_xvjud")
