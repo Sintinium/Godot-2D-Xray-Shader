@@ -12,6 +12,7 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_te4ve"]
 resource_local_to_scene = true
 shader = ExtResource("2_cehn0")
+shader_parameter/color_texture = false
 shader_parameter/tint = Color(0, 0.87451, 0, 1)
 shader_parameter/player_viewport = SubResource("ViewportTexture_lxrnd")
 
